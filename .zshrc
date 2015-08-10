@@ -76,13 +76,31 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
- alias zshconfig="vim ~/.zshrc"
- alias ohmyzsh="vim ~/.oh-my-zsh"
- alias vimrc="vim ~/.vimrc"
- alias jamesFolder="cd /cygdrive/c/Users/james"
- alias jira="jiracli"
- alias reloadZshConfig="source ~/.zshrc"
- alias testEcho="echo test"
- alias projects="cd ~/Projects"
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias vimrc="vim ~/.vimrc"
+alias jamesFolder="cd /cygdrive/c/Users/james"
+alias jira="jiracli"
+alias reloadZshConfig="source ~/.zshrc"
+alias testEcho="echo test"
+alias projects="cd ~/Projects"
 #JIRA Alias
- alias myIssues="jiracli --sprint FBO | grep -i \"james\""
+alias myIssues="jiracli --sprint FBO | grep -i \"james\""
+
+#5B1 SNMP Alias
+alias mpm2500get='snmpget -m /home/james/mibs/mpm2500mib -v 2c -c public 192.168.7.230'
+function countdown(){
+date1=$((`date +%s` + $1)); 
+while [ "$date1" -ne `date +%s` ]; do 
+	echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
+	sleep 0.1
+done
+		    }
+
+		    function stopwatch(){
+		    date1=`date +%s`; 
+		    while true; do 
+			    echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r"; 
+			    sleep 0.1
+		    done
+	    }
